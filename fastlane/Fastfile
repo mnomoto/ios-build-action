@@ -135,6 +135,12 @@ platform :ios do
     end
     project.save
 
+    # unlock
+    unlock_keychain( # If the keychain file is located in the standard location `~/Library/Keychains`, then it is sufficient to provide the keychain file name, or file name with its suffix.
+      path: 'ios-build.keychain',
+      password: keychain_password
+    )
+
     use_workspace = !ENV['WORKSPACE_PATH'].empty?
     use_build_sdk = !ENV['BUILD_SDK'].empty?
     use_build_destination = !ENV['BUILD_DESTINATION'].empty?
